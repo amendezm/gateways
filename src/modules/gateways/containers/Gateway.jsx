@@ -18,7 +18,7 @@ const Gateways = () => {
 
   return (
     <div className="gateways-container">
-      <GatewayForm onSubmit={updateList} />
+      <GatewayForm afterSubmit={updateList} />
       <GatewaysList gateways={gatewaysList} />
     </div>
   );

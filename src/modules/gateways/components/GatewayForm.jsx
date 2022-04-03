@@ -1,9 +1,16 @@
 import { useState } from "react";
 import { v4 } from "uuid";
+import { useForm } from "react-hook-form";
 
 import { createGateway } from "./../services";
 
-const GatewayForm = ({ onSubmit }) => {
+const GatewayForm = ({ afterSubmit }) => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  console.log(errors);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,13 +23,15 @@ const GatewayForm = ({ onSubmit }) => {
     setAddress(event.target.value);
   };
 
-  const handleSubmit = () => {
+  const onSubmit = () => {
     const body = { id: v4(), name, address, devices: [] };
     setIsSubmitting(true);
     createGateway(body)
       .then((response) => response.json())
       .then((data) => {
-        onSubmit(data);
+        afterSubmit(data);
+        setName("");
+        setAddress("");
         setIsSubmitting(false);
       })
       .catch(() => {
@@ -37,15 +46,28 @@ const GatewayForm = ({ onSubmit }) => {
         type="text"
         name="name"
         id="gatewayName"
+        {...register("name", { required: true, maxLength: 30 })}
         onChange={handleNameChange}
       />
+      {errors.name && <span className="error">Name is required</span>}
       <input
         type="text"
         name="ipAddress"
         id="gatewayAddress"
+        {...register("ipAddress", {
+          required: true,
+          pattern:
+            /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/,
+        })}
         onChange={handleAddressChange}
       />
-      <button onClick={handleSubmit} disabled={isSubmitting}>
+      {errors.ipAddress &&
+        (errors.ipAddress?.type === "pattern" ? (
+          <span className="error">Must be a valid IP</span>
+        ) : (
+          <span className="error">IP address is required</span>
+        ))}
+      <button onClick={handleSubmit(onSubmit)} disabled={isSubmitting}>
         Create
       </button>
     </form>

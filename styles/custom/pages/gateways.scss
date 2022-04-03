@@ -1,0 +1,14 @@
+.gateways-page {
+  height: 100vh;
+  background-color: #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .gateways-container {
+    width: 70vw;
+    height: 85vh;
+    display: grid;
+    grid-template-rows: 70px 1fr;
+  }
+}

@@ -1,0 +1,17 @@
+.gateways-bar {
+  background-color: $primary-color;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1.5rem;
+
+  .gateways-bar_button {
+    background-color: $secondary-color;
+    border: none;
+    padding: 0.65rem;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+}

@@ -1,5 +1,5 @@
-import { GatewaysList } from "./components/GatewayList";
+import { Gateways } from "./modules/gateways/containers/Gateway";
 
-const App = () => <GatewaysList />;
+const App = () => <Gateways />;
 
 export { App };

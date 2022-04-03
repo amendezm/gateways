@@ -1,4 +1,4 @@
-import { getGateways } from "./../services";
+import { getGateways } from "../services";
 import { useState, useEffect } from "react";
 
 const useGateways = () => {

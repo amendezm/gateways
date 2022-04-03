@@ -1,0 +1,49 @@
+{
+  "gateways": [
+    {
+      "test": "test",
+      "id": 1
+    },
+    {
+      "test": "test",
+      "id": 2
+    },
+    {
+      "test": "test",
+      "id": 3
+    },
+    {
+      "test": "test",
+      "id": 4
+    },
+    {
+      "test": "test",
+      "id": 5
+    },
+    {
+      "test": "test",
+      "id": 6
+    },
+    {
+      "test": "test",
+      "id": 7
+    },
+    {
+      "test": "test",
+      "id": 8
+    },
+    {
+      "test": "test",
+      "id": 9
+    },
+    {
+      "test": "test",
+      "id": 10
+    },
+    {
+      "test": "test",
+      "id": 11
+    }
+  ],
+  "devices": []
+}
